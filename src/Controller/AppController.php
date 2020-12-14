@@ -57,8 +57,7 @@ class AppController extends Controller
                 'Form' => [
                     'fields' =>[
                         // カラムの属性を指定する。値の部分がデータベースのカラム名
-                    'company_id' => 'company_id',
-                    'email' => 'email',
+                    'employee' => 'employee_id',
                     'password' => 'password'
                     
 

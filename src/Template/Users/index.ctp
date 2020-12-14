@@ -1,32 +1,61 @@
-<h1>スキルシート</h1>
-<table class="user_table">
-  <tr><th>名前</th><th>フリガナ</th><th>年齢</th><th>性別</th><th>最寄り駅</th><th>最終学歴</th></tr>
-  <tr>
-    <td><input type="text" size="5" maxlength="10" name="user_name" value="" class="memberList"></td>
-    <td><input type="text" size="30" maxlength="30" name="kana" value="" class="memberList"></td>
-    <td><input type="text" size="5" maxlength="10" name="age" value="" class="memberList"></td>
-    <td>
-
-    <input type="radio" name="gender" value="male">男
-    <input type="radio" name="gender" value="female">女
-    <input type="radio" name="gender" value="female">女
-    <input type="radio" name="gender" value="female">女
-<<<<<<< HEAD
-    <input type="radio" name="gender" value="female">女
-=======
-   
->>>>>>> a
-
-    <td><input type="text" size="5" maxlength="10" name="nearest_station" value="" class="memberList"></td>
-    <td><input type="text" size="30" maxlength="30" name="final_education" value="" class="memberList"></td>
-    </td>
-</tr>
-
-    <!-- ここで、$articles クエリーオブジェクトを繰り返して、記事の情報を出力します -->
-
-    <?php foreach ($users as $user): ?>
-<!-- 1列目 -->
-
-    <?php endforeach; ?>
-    <?php echo $this->Form->button(__('Save User')); ?>
-</table>
+<?php
+/**
+ * @var \App\View\AppView $this
+ * @var \App\Model\Entity\User[]|\Cake\Collection\CollectionInterface $users
+ */
+?>
+<nav class="large-3 medium-4 columns" id="actions-sidebar">
+    <ul class="side-nav">
+        <li class="heading"><?= __('Actions') ?></li>
+        <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
+    </ul>
+</nav>
+<div class="users index large-9 medium-8 columns content">
+    <h3><?= __('Users') ?></h3>
+    <table cellpadding="0" cellspacing="0">
+        <thead>
+            <tr>
+                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('employee_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('email') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('password') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('age') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('gender') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('Company') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
+                <th scope="col" class="actions"><?= __('Actions') ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($users as $user): ?>
+            <tr>
+                <td><?= $this->Number->format($user->id) ?></td>
+                <td><?= h($user->employee_id) ?></td>
+                <td><?= h($user->email) ?></td>
+                <td><?= h($user->password) ?></td>
+                <td><?= h($user->age) ?></td>
+                <td><?= h($user->gender) ?></td>
+                <td><?= h($user->Company) ?></td>
+                <td><?= h($user->created) ?></td>
+                <td><?= h($user->modified) ?></td>
+                <td class="actions">
+                    <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
+                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <div class="paginator">
+        <ul class="pagination">
+            <?= $this->Paginator->first('<< ' . __('first')) ?>
+            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+            <?= $this->Paginator->numbers() ?>
+            <?= $this->Paginator->next(__('next') . ' >') ?>
+            <?= $this->Paginator->last(__('last') . ' >>') ?>
+        </ul>
+        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+    </div>
+</div>
