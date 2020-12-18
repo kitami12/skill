@@ -11,17 +11,7 @@ class UsersController extends AppController
         $this->loadComponent('paginator');
         $this->loadComponent('Flash');
     }
-    public function login()
-{
-    if ($this->request->is('post')) {
-        $user = $this->Auth->identify();
-        if ($user) {
-            $this->Auth->setUser($user);
-            return $this->redirect($this->Auth->redirectUrl());
-        }
-        $this->Flash->error('ユーザー名またはパスワードが不正です。');
-    }
-}
+
     
   
     public function index()
@@ -35,5 +25,16 @@ class UsersController extends AppController
 {
     $user = $this->Users->findBySlug($slug)->firstOrFail();
     $this->set(compact('user'));
+}
+    public function login()
+{
+    if ($this->request->is('post')) {
+        $user = $this->Auth->identify();
+        if ($user) {
+            $this->Auth->setUser($user);
+            return $this->redirect($this->Auth->redirectUrl());
+        }
+        $this->Flash->error('社員IDまたはパスワードが不正です。');
+    }
 }
 }

@@ -37,6 +37,7 @@ class AppController extends Controller
      *
      * @return void
      */
+ 
     public function initialize()
     {
         parent::initialize();
@@ -52,28 +53,28 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
 
-        $this->loadComponent('Auth' , [
+        $this->loadComponent('Auth', [
+            
             'authenticate' => [
                 'Form' => [
-                    'fields' =>[
-                        // カラムの属性を指定する。値の部分がデータベースのカラム名
-                    'employee' => 'employee_id',
-                    'password' => 'password'
-                    
-
-
+                    'fields' => [
+                        'username' => 'email',
+                        'password' => 'password'
+                    ]
                 ]
-            ]
-         ],
-                 'loginAction' => [
+            ],
+            'loginAction' => [
                 'controller' => 'Users',
                 'action' => 'login'
             ],
-                 // コントローラーで isAuthorized を使用します
+            // コントローラーで isAuthorized を使用します
             'authorize' => ['Controller'],
             // 未認証の場合、直前のページに戻します
-            'unauthorizedRedirect' => $this->referer()
+            'unauthorizedReirect' => $this->referer()
         ]);
+
+       
+        
 
         // display アクションを許可して、PagesController が引き続き
         // 動作するようにします。また、読み取り専用のアクションを有効にします。
@@ -82,6 +83,10 @@ class AppController extends Controller
         
         
     }
-
+    public function isAuthorized($user)
+    {
+        //デフォルトでは、アクセスを拒否する
+        return false;
+    }
     
 }

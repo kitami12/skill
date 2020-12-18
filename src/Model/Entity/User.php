@@ -9,19 +9,20 @@ class User extends Entity
 {
     protected $_accessible = [
         '*' => true,
-        'id' => false,
+        'id' => true,
         'slug' => false,
 
 
 
     ];
+    
 
-    // protected function _setPassword($value)
-    // {
-    //     if (strlen($value)) {
-    //         $hasher = new DefaultPasswordHassher();
+    protected function _setPassword($value)
+    {
+        if (strlen($value)) {
+            $hasher = new DefaultPasswordHassher();
 
-    //         return $hasher->hash($value);
-    //     }
-    // }
+            return $hasher->hash($value);
+        }
+    }
 }
