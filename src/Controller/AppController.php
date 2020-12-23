@@ -55,10 +55,11 @@ class AppController extends Controller
 
         $this->loadComponent('Auth', [
             
+            
             'authenticate' => [
                 'Form' => [
                     'fields' => [
-                        'username' => 'employee',
+                        'username' => 'employee_id',
                         'password' => 'password'
                     ]
                 ]
