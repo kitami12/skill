@@ -1,4 +1,4 @@
-<h1>ログイン</h1>
+<h1>ユーザー登録</h1>
 
 <!-- FormHelperのFormでフォームやボタンを作成してる -->
 <?= $this->Form->create() ?>

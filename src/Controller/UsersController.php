@@ -10,6 +10,7 @@ class UsersController extends AppController
 
         $this->loadComponent('paginator');
         $this->loadComponent('Flash');
+        $this->Auth->allow(['logout']);
     }
 
     
@@ -21,11 +22,17 @@ class UsersController extends AppController
         
         $this->set(compact('users'));
     }
+
+    public function add()
+    {
+        
+    }
     public function view($slug = null)
 {
     $user = $this->Users->findBySlug($slug)->firstOrFail();
     $this->set(compact('user'));
 }
+
     public function login()
 {
     if ($this->request->is('post')) {
@@ -37,4 +44,13 @@ class UsersController extends AppController
         $this->Flash->error('社員IDまたはパスワードが不正です。');
     }
 }
+
+    public function logout()
+    {
+        $this->Flash->success('ログアウトしました。');
+        return $this->redirect($this->Auth->logout());
+        // ユーザー認証を解除し、ログアウト後のリダイレクト先URLを返す
+    }
+
+    
 }

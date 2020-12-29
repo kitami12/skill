@@ -1,6 +1,6 @@
 <?php
 namespace App\Model\Table;
-
+use Cake\Validation\Validator;
 use Cake\ORM\Table;
 
 class UserTable extends Table
@@ -9,4 +9,5 @@ class UserTable extends Table
     {
         $this->addBehavior('Timestamp');
     }
+    
 }
