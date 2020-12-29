@@ -10,7 +10,7 @@ class UsersController extends AppController
 
         $this->loadComponent('paginator');
         $this->loadComponent('Flash');
-        $this->Auth->allow(['logout']);
+        $this->Auth->allow(['logout','add']);
     }
 
     
