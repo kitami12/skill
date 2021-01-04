@@ -1,12 +1,13 @@
 <h1>ユーザー新規登録</h1>
 
 <!-- FormHelperのFormでフォームやボタンを作成してる -->
-<?= $this->Form->create() ?>
+<?= $this->Form->create('User') ?>
 <p>社員ID</p>
 <input type="text" name="employee_id" id="employee_id">
 
 <p>パスワード</p>
 <input type="password" name="password" id="password">
+
 
 <p>メールアドレス</p>
 <input type="text" name="email" id="email">
@@ -26,5 +27,6 @@
     <option>アンドロボディオーナ</option>
     <option>アンドロボコアテクノロジー</option>
 </select>
+<?= $this->Form->button('登録') ?>
 
 <?= $this->Form->end() ?>
