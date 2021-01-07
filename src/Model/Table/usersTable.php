@@ -60,7 +60,7 @@ class UsersTable extends Table
         $validator
             ->email('email')
             ->requirePresence('email', 'create')
-            ->notEmptyString('email');
+            ->notEmptyString('email','あいうえお');
 
         $validator
             ->scalar('password')
@@ -68,6 +68,10 @@ class UsersTable extends Table
             ->requirePresence('password', 'create')
             ->notEmptyString('password');
 
+            $validator
+            ->integer('num')
+            ->requirePresence('num', 'create')
+            ->notEmptyString('num');
         return $validator;
     }
 
