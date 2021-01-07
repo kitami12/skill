@@ -68,6 +68,9 @@ class AppController extends Controller
                 'controller' => 'Users',
                 'action' => 'login'
             ],
+            'loginRedirect' => [
+                'controller' => 'Users',
+                'action' => 'index'],
             // コントローラーで isAuthorized を使用します
             'authorize' => ['Controller'],
             // 未認証の場合、直前のページに戻します
