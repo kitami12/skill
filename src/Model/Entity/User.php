@@ -7,18 +7,18 @@ use Cake\ORM\Entity;
 
 class User extends Entity
 {
+
+ 
+
     protected $_accessible = [
         '*' => true,
         'id' => true,
-        'password' => true,
         'slug' => false,
 
 
 
     ];
-    protected $_hidden = [
-        'password',
-    ];
+   
 
     protected function _setPassword($value)
     {
