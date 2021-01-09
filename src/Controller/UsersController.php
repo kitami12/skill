@@ -9,6 +9,7 @@ class UsersController extends AppController
 
         $this->loadComponent('paginator');
         $this->loadComponent('Flash');
+        $this->Auth->allow(['logout']);
     }
   
     public function index()
@@ -35,5 +36,13 @@ public function login()
         $this->Flash->error('ユーザー名またはパスワードが不正です。');
     }
 }
+
+public function logout()
+{
+    $this->Flash->success('ログアウトしました。');
+    return $this->redirect($this->Auth->logout());
+    // ユーザー認証を解除し、ログアウト後のリダイレクト先URLを返す
+}
+
 
 }
